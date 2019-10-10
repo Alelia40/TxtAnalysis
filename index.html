@@ -1,17 +1,35 @@
 <!DOCTYPE html>
 <html>
 <script src="indexScripts.js"></script>
+
 <body>
 
-<h2>Barebones Front Page</h2>
+  <h2>Barebones Front Page</h2>
 
-<form>
-  <input type="text" name="name" id="textInsert" placeholder="Insert text here"/>
-</form>
-<button onclick="displayText()">Submit</button>
+  <div id="methodSelect">
+    <h3>Select your text input method here</h3>
+    <button onclick="swapMethods('text')">Text Input</button>
+    <button onclick="swapMethods('file')">Document Upload</button>
+  </div>
 
-<p>Your submitted text:</p>
-<p id="results"></p>
+  <div id="manualInput" style="display: block;">
+    <form>
+      <input type="text" name="name" id="textInsert" placeholder="Insert text here" />
+    </form>
+    <button onclick="displayText()">Submit</button>
+  </div>
+  
+  <div id="docUpload" style="display: none;">
+    <form>
+      <p>This method is under construction</p>
+    </form>
+  </div>
+
+
+
+  <p>Your submitted text:</p>
+  <p id="results"></p>
 
 </body>
+
 </html>

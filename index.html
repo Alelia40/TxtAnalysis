@@ -26,11 +26,17 @@
   </div>
 
   <div id="resultsBox">
-    <p>Subjctivity:</p>
-    <p>Objectivity:</p>
-    <form>
-      <input type="text" id ="polarityCheck" placeholder="Enter noun here"/><button>Check Sentiment</button>
-    </form>
+    <p>Subjctivity:<val></val></p>
+    <p>Objectivity:<val></val></p>
+
+    <div>
+        <input type="text" id ="polarityCheck" placeholder="Enter noun here"/> <button onclick="displayPolarity('50')">Check Sentiment</button>
+    </div>
+
+    <div>
+        <p>Noun polarity:<val id="polarityVal"></val></p>
+    </div>
+
     <p>Your submitted text:</p>
     <p id="results"></p>
   </div>

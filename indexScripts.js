@@ -13,3 +13,7 @@ function swapMethods(buttonName){
       document.getElementById('docUpload').style.display = "none";
    }
 }
+
+function displayPolarity(polarityValue){
+   document.getElementById("polarityVal").innerHTML = polarityValue;
+}

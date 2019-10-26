@@ -1,6 +1,11 @@
-function displayText() {
+function onSubmitPressed() {
    var textValue = document.getElementById("textInsert").value;
-	document.getElementById("results").innerHTML = textValue;
+   document.getElementById("results").innerHTML = textValue;
+   displayResultsBox();
+}
+
+function displayResultsBox(){
+   document.getElementById("resultsBox").style.display = "block";
 }
 
 function swapMethods(buttonName){

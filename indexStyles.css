@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.topBar{
+    background-color: #333;
+    overflow: hidden;
+}
+.topBar h2 {
+    color:white;
+    text-align: center;
+}
+
+.methodSelect {
+    
+}
+
+#resultsBox {
+
+    border-left-style: solid;
+    border-left-width: 10px;
+    border-color: blue;
+    padding-left: 5%;
+    padding-right: 5%;
+}

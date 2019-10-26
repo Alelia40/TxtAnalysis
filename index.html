@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html>
-<script src="indexScripts.js"></script>
+<head>
+  <script src="indexScripts.js"></script>
+  <link rel="stylesheet" href="./indexStyles.css"></link>
+</head>
 
 <body>
 
-  <h2>Barebones Front Page</h2>
+  <div class="topBar">
+    <h2>Slightly Improved Front Page</h2>
+  </div>
 
   <div id="methodSelect">
     <h3>Select your text input method here</h3>
-    <button onclick="swapMethods('text')">Text Input</button>
-    <button onclick="swapMethods('file')">Document Upload</button>
+    <button class="methodSelect" onclick="swapMethods('text')">Text Input</button>
+    <button class="methodSelect" onclick="swapMethods('file')">Document Upload</button>
   </div>
 
   <div id="manualInput" style="display: block;">
@@ -26,8 +31,9 @@
   </div>
 
   <div id="resultsBox">
-    <p>Subjctivity:<val></val></p>
-    <p>Objectivity:<val></val></p>
+    <p>Subjectivity<val></val></p>
+
+    <p>Objectivity<val></val></p>
 
     <div>
         <input type="text" id ="polarityCheck" placeholder="Enter noun here"/> <button onclick="displayPolarity('50')">Check Sentiment</button>

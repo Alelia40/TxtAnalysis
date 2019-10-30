@@ -1,0 +1,70 @@
+body{
+    margin: 0;
+    font-family: sans-serif;
+}
+
+.topBar{
+    background-color: #262421;
+    overflow: hidden;
+}
+.topBar h2 {
+    color:white;
+    text-align: center;
+}
+
+.methodSelect {
+    
+}
+
+#inputBox {
+    padding-left: 5% ;
+    padding-right: 5%;
+}
+
+#resultsBox{
+    display: none;
+}
+#resultsBody {
+    overflow: hidden;
+
+    border-left-style: solid;
+    border-left-width: 10px;
+    border-color: #14868c;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #e6f8f9;
+}
+
+#resultHeader {
+    background-color:#14868c;
+    color: white;
+    width: 100%;
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.smallDial {
+    border-style: solid;
+    border-width: 1px;
+    border-color:  #333;
+    background-color: #333;
+    color: white;
+
+    float: left;
+    width: 48%;
+    text-align: center;
+    margin: 0 1.5% 1.5% 0;
+}
+
+.largeDial {
+    border-style: solid;
+    border-width: 1px;
+    border-color:  #333;
+    color: white;
+
+    width: 100%;
+    text-align: center;
+    background-color: #333;
+    margin: 1.5% 1.5% 1.5% 0;
+}

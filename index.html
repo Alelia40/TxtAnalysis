@@ -1,34 +1,71 @@
 <!DOCTYPE html>
 <html>
-<script src="indexScripts.js"></script>
+
+<head>
+  <script src="indexScripts.js"></script>
+  <link rel="stylesheet" href="./indexStyles.css">
+  </link>
+</head>
 
 <body>
 
-  <h2>Barebones Front Page</h2>
-
-  <div id="methodSelect">
-    <h3>Select your text input method here</h3>
-    <button onclick="swapMethods('text')">Text Input</button>
-    <button onclick="swapMethods('file')">Document Upload</button>
+  <div class="topBar">
+    <h2>Slightly Improved Front Page</h2>
   </div>
 
-  <div id="manualInput" style="display: block;">
-    <form>
-      <input type="text" name="name" id="textInsert" placeholder="Insert text here" />
-    </form>
-    <button onclick="displayText()">Submit</button>
+  <div id="inputBox">
+    <div id="methodSelect">
+      <h3>Select your text input method here</h3>
+      <button class="methodSelect" onclick="swapMethods('text')">Text Input</button>
+      <button class="methodSelect" onclick="swapMethods('file')">Document Upload</button>
+    </div>
+
+    <div id="manualInput" style="display: block;">
+      <form>
+        <textarea type="text" id="textInsert" placeholder="Insert text here" ></textarea>
+      </form>
+      <button onclick="onSubmitPressed()">Submit</button>
+    </div>
+
+    <div id="docUpload" style="display: none;">
+      <form>
+        <p>This method is under construction</p>
+      </form>
+    </div>
   </div>
-  
-  <div id="docUpload" style="display: none;">
-    <form>
-      <p>This method is under construction</p>
-    </form>
+
+  <div id="resultsBox">
+    <div id="resultHeader" onclick="displayResultsBox()">
+      <p>Your Analysis Results</p>
+    </div>
+    <div id="resultsBody">
+
+      <div class="largeDial" style ="text-align: left;">
+        <p>Spelling errors - <val id="spellingErrors">N/A</val></p>
+
+        <p>Your submitted text</p>
+        <p id="results"></p>
+      </div>
+
+      <div class="largeDial">
+        <input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button
+          onclick="displayPolarity('50')">Check Sentiment</button>
+        <p>Result: <val id="polarityVal"></val>
+        </p>
+      </div>
+
+      <div class="smallDial">
+        <p>Subjectivity</p>
+        <val id="subVal">N/A</val>
+      </div>
+
+      <div class="smallDial">
+        <p>Objectivity</p>
+        <val id="objVal">N/A</val>
+      </div>
+
+    </div>
   </div>
-
-
-
-  <p>Your submitted text:</p>
-  <p id="results"></p>
 
 </body>
 

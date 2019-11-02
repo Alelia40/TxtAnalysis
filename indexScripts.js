@@ -19,6 +19,17 @@ function swapMethods(buttonName){
    }
 }
 
+function toggleAnalysisFilter(){
+   var x = document.getElementById("analysisFilter");
+
+   if(x.style.display == "none"){
+      x.style.display = "block"
+   }
+   else{
+      x.style.display = "none";
+   }
+}
+
 function displayPolarity(polarityValue){
    document.getElementById("polarityVal").innerHTML = polarityValue;
 }

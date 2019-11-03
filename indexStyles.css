@@ -12,6 +12,28 @@ body{
     text-align: center;
 }
 
+#filterToggle{
+    background-color: lightseagreen;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+
+    font-size: 14px;
+}
+#filterToggle:hover{
+    background-color: rgb(15, 94, 90);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+#analysisFilter{
+    background-color: rgb(175, 216, 215);
+    color: white;
+    display: none;
+}
+
 .methodSelect {
     
 }

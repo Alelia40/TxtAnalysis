@@ -10,7 +10,7 @@
 <body>
 
   <div class="topBar">
-    <h2>Slightly Improved Front Page</h2>
+    <h2>Text Subjectivity Analysis (Front Page)</h2>
   </div>
 
   <div id="inputBox">
@@ -28,9 +28,10 @@
     </div>
 
     <div id="docUpload" style="display: none;">
-      <form>
-        <p>This method is under construction</p>
-      </form>
+      <form id="uploadbanner" enctype="multipart/form-data" method="post" action="#">
+        <input id="fileupload" name="myfile" type="file" />
+        <input type="submit" value="submit" id="submit" />
+     </form>
     </div>
 
     <button id="filterToggle" onclick="toggleAnalysisFilter()">Customize your text analysis</button><br>

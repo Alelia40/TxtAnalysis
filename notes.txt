@@ -1,0 +1,8 @@
+Features
+- Display results of analysis
+- Place to enter data (HTML, JSON, .docx, .pdf)
+- Customization options for the users (idk what that will involve)
+--show text
+--objectivity 
+--subjectivity
+--Polarity Dialog

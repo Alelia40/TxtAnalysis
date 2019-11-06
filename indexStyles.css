@@ -16,7 +16,9 @@ body{
     background-color: lightseagreen;
     color: white;
     border: none;
+    margin: 30px 0px;
     padding: 10px 20px;
+
 
     font-size: 14px;
 }

@@ -34,17 +34,17 @@
 			</form>
 		</div>
 
-		<button id="filterToggle" onclick="toggleAnalysisFilter()">Customize your text analysis</button><br>
+		<button class="round-button" onclick="toggleAnalysisFilter()">Customize your text analysis</button><br>
 		<div id="analysisFilter">
 			<div>
-				Show Input Text <input type="checkbox" id="inputtedTextToggle" checked><br>
-				Spelling Errors <input type="checkbox" id="spellingErrorsToggle"checked><br>
-				Subjectivity <input type="checkbox" id="subjectivityToggle"checked><br>
-				Objectivity <input type="checkbox" id="objectivityToggle"checked><br>
-				Polarity Dialog <input type="checkbox" id="polarityToggle"checked>
+				<h2 class ="analysis">Show Input Text</h2><input type="checkbox" id="inputtedTextToggle" checked><span class="checkmark"></span><br>
+				<h2 class ="analysis">Spelling Errors</h2> <input type="checkbox" id="spellingErrorsToggle"checked><span class="checkmark"></span><br>
+				<h2 class ="analysis">Subjectivity</h2> <input type="checkbox" id="subjectivityToggle"checked><span class="checkmark"></span><br>
+				<h2 class ="analysis">Objectivity</h2> <input type="checkbox" id="objectivityToggle"checked><span class="checkmark"></span><br>
+				<h2 class ="analysis">Polarity Dialog</h2> <input type="checkbox" id="polarityToggle"checked><span class="checkmark"></span>
 			</div>
 		</div>
-		<button onclick="onSubmitPressed()">Submit</button>
+		<button class="round-button" onclick="onSubmitPressed()">Submit</button>
 	</div>
 
 	<br />
@@ -77,7 +77,7 @@
 
 
 			<div id="polarityDisplay" class="largeDial">
-				<input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button
+				<input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button class="round-button"
 				onclick="displayPolarity('50')">Check Sentiment</button>
 				<p>Result: <val id="polarityVal"></val>
 				</p>

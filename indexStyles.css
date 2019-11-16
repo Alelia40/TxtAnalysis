@@ -1,6 +1,12 @@
 body{
     margin: 0;
-    font-family: sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
+    background-color:rgb(21, 32, 43);
+}
+
+h3
+{
+    color: white;
 }
 
 .topBar{
@@ -12,29 +18,58 @@ body{
     text-align: center;
 }
 
-#filterToggle{
-    background-color: lightseagreen;
-    color: white;
-    border: none;
-    margin: 30px 0px;
-    padding: 10px 20px;
-
-
+button{
+    background-color: rgb(21, 32, 43);
+    color: #32b3dd;
+    margin: 0px;
+    padding: 20px 40px;
     font-size: 14px;
+    transition: 0.3s;
 }
-#filterToggle:hover{
-    background-color: rgb(15, 94, 90);
+
+button:hover{
+    background-color: rgb(28, 42, 56);
     color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 14px;
+}
+
+.round-button
+{
+    border-radius: 15%;
+    margin: 30px 0px;
+    border: 2px solid black;
+    border-color: #32b3dd;
 }
 
 #analysisFilter{
-    background-color: rgb(175, 216, 215);
+    background-color: rgb(34, 51, 68);
     color: white;
     display: none;
+    border: 1px solid white;
 }
+
+h2.analysis
+{
+    display: block;
+    font-size: 14px;
+    margin-block-start: 0em;
+    margin-block-end: 0em;
+    margin: 5px;
+}
+
+.checkmark
+{
+    position: absolute;
+    background-color: #32b3dd;
+}
+
+:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+
 
 .methodSelect {
 
@@ -46,7 +81,7 @@ body{
 }
 
 #resultsBox{
-    background-color:#14868c;
+    background-color: rgb(28, 42, 56);
     display: none;
 	 padding-top: 1em;
 	 padding-bottom: 1em;
@@ -56,8 +91,8 @@ body{
     background-color: #e6f8f9;
 	 width: 95%;
 	 margin: auto;
-	 padding-top: 1em;
-	 padding-bottom: 1em;
+	 padding-top: 5px;
+	 padding-bottom: 5px;
 }
 
 #resultHeader {
@@ -88,7 +123,7 @@ body{
 
     width: 95%;
     text-align: center;
-    background-color: #333;
+    background-color: rgb(21, 32, 43);
     margin: auto;
 	 padding: .5em;
 }
@@ -96,11 +131,9 @@ body{
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;
-  background-color: #f1f1f1;
 }
 
 .tab button {
-  background-color: inherit;
   float: left;
   border: none;
   outline: none;
@@ -111,11 +144,11 @@ body{
 }
 
 .tab button:hover {
-  background-color: #ddd;
+  background-color: rgb(28, 42, 56);
 }
 
 .tab button.active {
-  background-color: #ccc;
+  background-color:  #ddd;
 }
 
 .tabcontent {

@@ -37,7 +37,7 @@ body{
 }
 
 .methodSelect {
-    
+
 }
 
 #inputBox {
@@ -46,25 +46,24 @@ body{
 }
 
 #resultsBox{
+    background-color:#14868c;
     display: none;
+	 padding-top: 1em;
+	 padding-bottom: 1em;
 }
 #resultsBody {
     overflow: hidden;
-
-    border-left-style: solid;
-    border-left-width: 10px;
-    border-color: #14868c;
-    padding-left: 5%;
-    padding-right: 5%;
     background-color: #e6f8f9;
+	 width: 95%;
+	 margin: auto;
+	 padding-top: 1em;
+	 padding-bottom: 1em;
 }
 
 #resultHeader {
-    background-color:#14868c;
     color: white;
     width: 100%;
     text-align: center;
-
     overflow: hidden;
 }
 
@@ -84,11 +83,44 @@ body{
 .largeDial {
     border-style: solid;
     border-width: 1px;
-    border-color:  #333;
+    border-color:  white;
     color: white;
 
-    width: 100%;
+    width: 95%;
     text-align: center;
     background-color: #333;
-    margin: 1.5% 1.5% 1.5% 0;
+    margin: auto;
+	 padding: .5em;
+}
+
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+.tab button:hover {
+  background-color: #ddd;
+}
+
+.tab button.active {
+  background-color: #ccc;
+}
+
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }

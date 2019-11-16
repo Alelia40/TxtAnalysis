@@ -2,84 +2,89 @@
 <html>
 
 <head>
-  <script src="indexScripts.js"></script>
-  <link rel="stylesheet" href="./indexStyles.css">
-  </link>
+	<script src="indexScripts.js"></script>
+	<link rel="stylesheet" href="./indexStyles.css">
+</link>
 </head>
 
 <body>
 
-  <div class="topBar">
-    <h2>Text Subjectivity Analysis (Front Page)</h2>
-  </div>
+	<div class="topBar">
+		<h2>Text Subjectivity Analysis (Front Page)</h2>
+	</div>
 
-  <div id="inputBox">
+	<div id="inputBox">
+		<h3>Select your text input method here</h3>
 
-    <div id="methodSelect">
-      <h3>Select your text input method here</h3>
-      <button class="methodSelect" onclick="swapMethods('text')">Text Input</button>
-      <button class="methodSelect" onclick="swapMethods('file')">Document Upload</button>
-    </div>
+		<div class="tab" id="methodSelect">
+			<button class="tablinks active" onclick="swapMethods(event,'textInput')">Text Input</button>
+			<button class="tablinks" onclick="swapMethods(event,'docUpload')">Document Upload</button>
+		</div>
 
-    <div id="manualInput" style="display: block;">
-      <form>
-        <textarea type="text" id="textInsert" placeholder="Insert text here"></textarea>
-      </form>
-    </div>
+		<div id="textInput"  class="tabcontent" style="display: block;">
+			<form>
+				<textarea type="text" id="textInputContents" placeholder="Insert text here"></textarea>
+			</form>
+		</div>
 
-    <div id="docUpload" style="display: none;">
-      <form id="uploadbanner" enctype="multipart/form-data" method="post" action="#">
-        <input id="fileupload" name="myfile" type="file" />
-        <input type="submit" value="submit" id="submit" />
-     </form>
-    </div>
+		<div id="docUpload" class="tabcontent" style="display: none;">
+			<form id="uploadbanner" enctype="multipart/form-data" method="post" action="#">
+				<input id="fileupload" name="myfile" type="file" />
+				<input type="submit" value="submit" id="submit" />
+			</form>
+		</div>
 
-    <button id="filterToggle" onclick="toggleAnalysisFilter()">Customize your text analysis</button><br>
-    <div id="analysisFilter">
-      <div>
-        Show Input Text <input type="checkbox" id="originalTextToggle" checked><br>
-        Subjectivity <input type="checkbox" id="subjectivityToggle"><br>
-        Objectivity <input type="checkbox" id="objectivityToggle"><br>
+		<button id="filterToggle" onclick="toggleAnalysisFilter()">Customize your text analysis</button><br>
+		<div id="analysisFilter">
+			<div>
+				Show Input Text <input type="checkbox" id="inputtedTextToggle" checked><br>
+				Spelling Errors <input type="checkbox" id="spellingErrorsToggle"checked><br>
+				Subjectivity <input type="checkbox" id="subjectivityToggle"checked><br>
+				Objectivity <input type="checkbox" id="objectivityToggle"checked><br>
+				Polarity Dialog <input type="checkbox" id="polarityToggle"checked>
+			</div>
+		</div>
+		<button onclick="onSubmitPressed()">Submit</button>
+	</div>
 
-        Polarity Dialog <input type="checkbox" id="polarityToggle">
-      </div>
-    </div>
-    <button onclick="onSubmitPressed()">Submit</button>
-  </div>
+	<br />
 
-  <div id="resultsBox">
-    <div id="resultHeader">
-      <p>Your Analysis Results</p>
-    </div>
-    <div id="resultsBody">
+	<div id="resultsBox">
+		<div id="resultHeader">
+			<p>Your Analysis Results</p>
+		</div>
 
-      <div class="largeDial" style="text-align: left;">
-        <p>Your submitted text</p>
-        <p id="results"></p>
+		<div id="resultsBody">
 
-        <p>Spelling errors- <val id="spellingErrors">N/A</val>
-        </p>
-      </div>
+			<div id="inputtedTextDisplay" class="largeDial" style="text-align: left;">
+				<p>Your input text:</p>
+				<p id="inputtedText"></p>
+			</div>
 
-      <div class="largeDial">
-        <input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button
-          onclick="displayPolarity('50')">Check Sentiment</button>
-        <p>Result: <val id="polarityVal"></val>
-        </p>
-      </div>
+			<div id="spellingErrorsDisplay" class="largeDial" style="text-align: left;">
+				<p>Spelling errors- <val id="spellingErrors">N/A</val></p>
+			</div>
 
-      <div class="smallDial">
-        <p>Subjectivity</p>
-        <val id="subVal">N/A</val>
-      </div>
+			<div id="subjectivityDisplay" class="largeDial"style="text-align: left;">
+				<p>Subjectivity</p>
+				<val id="subVal">N/A</val>
+			</div>
 
-      <div class="smallDial">
-        <p>Objectivity</p>
-        <val id="objVal">N/A</val>
-      </div>
+			<div id="objectivityDisplay" class="largeDial"style="text-align: left;">
+				<p>Objectivity</p>
+				<val id="objVal">N/A</val>
+			</div>
 
-    </div>
-  </div>
+
+			<div id="polarityDisplay" class="largeDial">
+				<input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button
+				onclick="displayPolarity('50')">Check Sentiment</button>
+				<p>Result: <val id="polarityVal"></val>
+				</p>
+			</div>
+
+		</div>
+	</div>
 
 </body>
 

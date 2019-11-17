@@ -2,9 +2,8 @@
 <html>
 
 <head>
-	<script src="indexScripts.js"></script>
-	<link rel="stylesheet" href="./indexStyles.css">
-</link>
+	<script src="../js/indexScripts.js"></script>
+	<link rel="stylesheet" href="../css/indexStyles.css">
 </head>
 
 <body>
@@ -21,7 +20,7 @@
 			<button class="tablinks" onclick="swapMethods(event,'docUpload')">Document Upload</button>
 		</div>
 
-		<div id="textInput"  class="tabcontent" style="display: block;">
+		<div id="textInput" class="tabcontent" style="display: block;">
 			<form>
 				<textarea type="text" id="textInputContents" placeholder="Insert text here"></textarea>
 			</form>
@@ -37,11 +36,11 @@
 		<button class="round-button" onclick="toggleAnalysisFilter()">Customize your text analysis</button><br>
 		<div id="analysisFilter">
 			<div>
-				<h2 class ="analysis">Show Input Text</h2><input type="checkbox" id="inputtedTextToggle" checked><span class="checkmark"></span><br>
-				<h2 class ="analysis">Spelling Errors</h2> <input type="checkbox" id="spellingErrorsToggle"checked><span class="checkmark"></span><br>
-				<h2 class ="analysis">Subjectivity</h2> <input type="checkbox" id="subjectivityToggle"checked><span class="checkmark"></span><br>
-				<h2 class ="analysis">Objectivity</h2> <input type="checkbox" id="objectivityToggle"checked><span class="checkmark"></span><br>
-				<h2 class ="analysis">Polarity Dialog</h2> <input type="checkbox" id="polarityToggle"checked><span class="checkmark"></span>
+				<h2 class="analysis">Show Input Text</h2><input type="checkbox" id="inputtedTextToggle" checked><span class="checkmark"></span><br>
+				<h2 class="analysis">Spelling Errors</h2> <input type="checkbox" id="spellingErrorsToggle" checked><span class="checkmark"></span><br>
+				<h2 class="analysis">Subjectivity</h2> <input type="checkbox" id="subjectivityToggle" checked><span class="checkmark"></span><br>
+				<h2 class="analysis">Objectivity</h2> <input type="checkbox" id="objectivityToggle" checked><span class="checkmark"></span><br>
+				<h2 class="analysis">Polarity Dialog</h2> <input type="checkbox" id="polarityToggle" checked><span class="checkmark"></span>
 			</div>
 		</div>
 		<button class="round-button" onclick="onSubmitPressed()">Submit</button>
@@ -62,23 +61,24 @@
 			</div>
 
 			<div id="spellingErrorsDisplay" class="largeDial" style="text-align: left;">
-				<p>Spelling errors- <val id="spellingErrors">N/A</val></p>
+				<p>Spelling errors- <val id="spellingErrors">N/A</val>
+				</p>
 			</div>
 
-			<div id="subjectivityDisplay" class="largeDial"style="text-align: left;">
+			<div id="subjectivityDisplay" class="largeDial" style="text-align: left;">
 				<p>Subjectivity</p>
 				<val id="subVal">N/A</val>
 			</div>
 
-			<div id="objectivityDisplay" class="largeDial"style="text-align: left;">
+			<div id="objectivityDisplay" class="largeDial" style="text-align: left;">
 				<p>Objectivity</p>
 				<val id="objVal">N/A</val>
 			</div>
 
 
 			<div id="polarityDisplay" class="largeDial">
-				<input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button class="round-button"
-				onclick="displayPolarity('50')">Check Sentiment</button>
+				<input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button class="round-button" onclick="displayPolarity('50')">Check
+					Sentiment</button>
 				<p>Result: <val id="polarityVal"></val>
 				</p>
 			</div>

@@ -128,6 +128,10 @@ h2.analysis
 	 padding: .5em;
 }
 
+label{
+    font-size: 50px;
+}
+
 .tab {
   overflow: hidden;
   border: 1px solid #ccc;

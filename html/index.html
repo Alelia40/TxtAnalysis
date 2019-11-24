@@ -4,6 +4,7 @@
 <head>
 	<script src="../js/indexScripts.js"></script>
 	<link rel="stylesheet" href="../css/indexStyles.css">
+	<script src="http://bernii.github.com/gauge.js/dist/gauge.js" type="text/javascript" language="javascript"></script>
 </head>
 
 <body>
@@ -66,13 +67,15 @@
 			</div>
 
 			<div id="subjectivityDisplay" class="largeDial" style="text-align: left;">
-				<p>Subjectivity</p>
-				<val id="subVal">N/A</val>
+				<p>Subjectivity</p>				
+				<canvas id="subDial" height="150" width="200"></canvas>
+				<label id="subVal"></label>
 			</div>
 
 			<div id="objectivityDisplay" class="largeDial" style="text-align: left;">
 				<p>Objectivity</p>
-				<val id="objVal">N/A</val>
+				<canvas id="objDial" height="150" width="200"></canvas>
+				<label id="objVal"></label>
 			</div>
 
 

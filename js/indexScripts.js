@@ -4,6 +4,7 @@ function onSubmitPressed() {
 
 	setSubjectivityValue(10);
 	setObjectivityValue(10);
+	setPolarityValue(0, "N/A");
 }
 
 function displayDials(){
@@ -85,7 +86,7 @@ function toggleAnalysisFilter(){
 	}
 }
 
-function setPolarityValue(polarityValue){
+function onPolarityClick(){
 	document.getElementById("polarityVal").innerHTML = polarityValue;
 }
 
@@ -161,4 +162,69 @@ function setObjectivityValue(objectivityValue){
 	  gauge2.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	  gauge2.animationSpeed = 32; // set animation speed (32 is default value)
 	  gauge2.set(objectivityValue); // set actual value
+}
+
+function setPolarityValue(polarityValue, nounName){
+	document.getElementById('polaritySubject').innerHTML = nounName;
+
+	var opts = {
+		angle: -0.2, // The span of the gauge arc
+		lineWidth: 0.2, // The line thickness
+		radiusScale: 1, // Relative radius
+		pointer: {
+		  length: 0.6, // // Relative to gauge radius
+		  strokeWidth: 0.035, // The thickness
+		  color: '#000000' // Fill color
+		},
+		limitMax: true,     // If false, max value increases automatically if value > maxValue
+		limitMin: true,     // If true, the min value of the gauge will be fixed
+		strokeColor: '#E0E0E0',  // to see which ones work best for you
+		highDpiSupport: true,     // High resolution support
+
+		staticZones: [
+			{strokeStyle: "#F03E3E", min: -99, max: -75}, // red - highly negative
+			{strokeStyle: "#FFDD00", min: -25, max: 25}, // Yellow - moderate
+			{strokeStyle: "#FAAC58", min: -74, max: -26}, // orange - negative
+			{strokeStyle: "#66ff66", min: 26, max: 74}, // green - positive
+			{strokeStyle: "#32b3dd", min: 75, max: 99}  // blue - highly positive
+		 ],
+		
+	};
+	  var target = document.getElementById('polDial'); // your canvas element
+	  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
+	  gauge.setTextField(document.getElementById('polarityVal'));
+	  gauge.maxValue = 99; // set max gauge value
+	  gauge.setMinValue(-99);  // Prefer setter over gauge.minValue = 0
+	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
+	  gauge.set(polarityValue); // set actual value
+
+	  //set the punchline to match the dial value
+	  setPunchline(polarityValue);
+}
+
+//function for polarity dial that sets a punchline to summarize the value of the dial
+function setPunchline(polarityValue){
+	var punchline = document.getElementById('polPunch');
+
+	  if(polarityValue >= -99 && polarityValue <= -75){
+		  punchline.innerHTML = " - Very Negative"
+	  }
+	  else if(polarityValue >= -74 && polarityValue <= -26){
+		  punchline.innerHTML = " - Negative"
+	  }
+	  else if(polarityValue >= -25 && polarityValue < 0){
+		  punchline.innerHTML = " - Leaning Negative"
+	  }
+	  else if(polarityValue == 0){
+		  punchline.innerHTML = " - Neutral"
+	  }
+	  else if(polarityValue > 0 && polarityValue <= 25){
+		  punchline.innerHTML = " - Leaning Positive"
+	  }
+	  else if(polarityValue >= 26 && polarityValue <= 74){
+		  punchline.innerHTML = " - Positive"
+	  }
+	  else {
+		  punchline.innerHTML = " - Very Positive"
+	  }
 }

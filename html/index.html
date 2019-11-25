@@ -82,8 +82,10 @@
 			<div id="polarityDisplay" class="largeDial">
 				<input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button class="round-button" onclick="displayPolarity('50')">Check
 					Sentiment</button>
-				<p>Result: <val id="polarityVal"></val>
+				<p>Sentiment towards <val id="polaritySubject"></val>
 				</p>
+				<canvas id="polDial" height="150" width="200"></canvas>
+				<label id="polarityVal"></label><label id="polPunch"></label>
 			</div>
 
 		</div>

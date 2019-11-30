@@ -22,9 +22,8 @@
 		</div>
 
 		<div id="textInput" class="tabcontent" style="display: block;">
-			<form>
 				<textarea type="text" id="textInputContents" placeholder="Insert text here"></textarea>
-			</form>
+				<input type="submit" onclick="onUploadText()">
 		</div>
 
 		<div id="docUpload" class="tabcontent" style="display: none;">
@@ -44,7 +43,7 @@
 				<h2 class="analysis">Polarity Dialog</h2> <input type="checkbox" id="polarityToggle" checked><span class="checkmark"></span>
 			</div>
 		</div>
-		<button class="round-button" onclick="onSubmitPressed()">Submit</button>
+		<button class="round-button" onclick="onSubmitPressed()">Generate Report</button>
 	</div>
 
 	<br />

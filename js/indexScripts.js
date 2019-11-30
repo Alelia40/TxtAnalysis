@@ -1,10 +1,37 @@
+
+function onUploadText(){
+	//generate serverside save file name
+	generateServerSave();
+
+	var serversave = sessionStorage.getItem("ServerFile");
+	//make an http call to the api to upload text in the textbox to the serversave file
+}
+
+//saves a filename to sessionstorage, this is the file that you upload text to, and all the api calls will work with
+function generateServerSave(){
+	var rn = new Date().getTime();
+	var fileName = "file-"+rn+".txt";
+	sessionStorage.setItem("ServerFile", fileName);
+}
+
 function onSubmitPressed() {
 	displayDials();
 	displayResultsBox();
 
+	//creates an api call to makereport
+	
+
+	//based on results, sets values
 	setSubjectivityValue(10);
 	setObjectivityValue(10);
 	setPolarityValue(0, "N/A");
+}
+
+
+//helper method that creates the string for calling the makereport api request, adds params based on customization options
+function makeRequestString(){
+	var result = "put the request string here"
+	return result;
 }
 
 function displayDials(){

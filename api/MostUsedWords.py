@@ -14,8 +14,6 @@ text = text_file.read()
 blob = TextBlob(text)
 
 top_five = reversed(sorted(blob.np_counts.items(), key=lambda kv: (kv[1], kv[0]))[-5:])
-for value in top_five:
-    print(value)
 
 print("Content-Type: text/plain\r\n\r\n")
 print()

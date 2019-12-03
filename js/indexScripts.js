@@ -255,3 +255,15 @@ function setPunchline(polarityValue){
 		  punchline.innerHTML = " - Very Positive"
 	  }
 }
+
+//call like so: makeAPICall( get or post, url with params, (result)=> { do stuff with result })
+function makeAPICall(method, URL, callback){
+	$.ajax({
+		url: URL,
+		type: method,
+		success: callback,
+		error:function(error){
+			console.log(`There was an error with call-${URL}`);
+		}
+	})
+}

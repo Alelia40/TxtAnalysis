@@ -18,7 +18,7 @@ pol = []
 subj = []
 for s in blob.sentences:
     words = s.words
-    if words.__contains__(subject):
+    if subject in words.lower():
         pol.append(s.polarity)
         subj.append(s.subjectivity)
 

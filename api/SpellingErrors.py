@@ -23,7 +23,7 @@ for word in blob.sentences.words:
 # JSON output
 print("Content-Type: text/plain\r\n\r\n")
 print()
-print("{ \"Data\":"+counter+" }")
+print("{ \"Data\":"+str(counter)+" }")
 print(fs.getvalue("a"))
 
 text_file.close()

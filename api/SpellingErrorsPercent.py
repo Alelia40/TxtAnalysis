@@ -25,7 +25,7 @@ percent = counter/word_count * 100
 
 print("Content-Type: text/plain\r\n\r\n")
 print()
-print("{ \"Data\":"+percent+" }")
+print("{ \"Data\":"+str(percent)+" }")
 print(fs.getvalue("a"))
 
 text_file.close()

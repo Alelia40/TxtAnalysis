@@ -39,12 +39,13 @@
 			<div>
 				<h2 class="analysis">Show Input Text</h2><input type="checkbox" id="inputtedTextToggle" checked><span class="checkmark"></span><br>
 				<h2 class="analysis">Spelling Errors</h2> <input type="checkbox" id="spellingErrorsToggle" checked><span class="checkmark"></span><br>
+				<h2 class="analysis">Word Count</h2> <input type="checkbox" id="wordCountToggle" checked><span class="checkmark"></span><br>
 				<h2 class="analysis">Subjectivity</h2> <input type="checkbox" id="subjectivityToggle" checked><span class="checkmark"></span><br>
 				<h2 class="analysis">Objectivity</h2> <input type="checkbox" id="objectivityToggle" checked><span class="checkmark"></span><br>
-				<h2 class="analysis">Polarity Dialog</h2> <input type="checkbox" id="polarityToggle" checked><span class="checkmark"></span>
+				<h2 class="analysis">Targeted Sentiment Analysis</h2> <input type="checkbox" id="polarityToggle" checked><span class="checkmark"></span>
 			</div>
 		</div>
-		<button class="round-button" onclick="onSubmitPressed()">Generate Report</button>
+		<button id="makeReportBtn" class="round-button" onclick="onSubmitPressed()">Generate Report</button>
 	</div>
 
 	<br />
@@ -57,30 +58,36 @@
 		<div id="resultsBody">
 
 			<div id="inputtedTextDisplay" class="largeDial" style="text-align: left;">
-				<p>Your input text:</p>
+				<h2>Your input text</h2>
 				<p id="inputtedText"></p>
 			</div>
 
 			<div id="spellingErrorsDisplay" class="largeDial" style="text-align: left;">
-				<p>Spelling errors- <val id="spellingErrors">N/A</val>
-				</p>
+				<h2>Text Info</h2>
+				<p><val id="spellingErrors">N/A</val> spelling errors (<val id="spellingPercent">N/A</val> percent of the text)</p>
+			</div>
+
+			<div id="wordCountDisplay" class="largeDial" style="text-align: left;">
+				<h2>Word Count</h2>
+				<p>Your text contained <val id="wordCountVal">N/A</val> recognisable words</p>
 			</div>
 
 			<div id="subjectivityDisplay" class="largeDial" style="text-align: left;">
-				<p>Subjectivity</p>				
+				<h2>Subjectivity</h2>				
 				<canvas id="subDial" height="150" width="200"></canvas>
 				<label id="subVal"></label>
 			</div>
 
 			<div id="objectivityDisplay" class="largeDial" style="text-align: left;">
-				<p>Objectivity</p>
+				<h2>Objectivity</h2>
 				<canvas id="objDial" height="150" width="200"></canvas>
 				<label id="objVal"></label>
 			</div>
 
 
 			<div id="polarityDisplay" class="largeDial">
-				<input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button class="round-button" onclick="displayPolarity('50')">Check
+				<h2>Targeted Sentiment Analysis</h2>
+				<input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button class="round-button" onclick="onPolarityClick()">Check
 					Sentiment</button>
 				<p>Sentiment towards <val id="polaritySubject"></val>
 				</p>

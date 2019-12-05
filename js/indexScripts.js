@@ -11,6 +11,9 @@ function onUploadText(){
 	makeAPICall('POST', url, (result) => {
 		console.log(result);
 	})
+
+	//enable the generate report btn
+	document.getElementById('makeReportBtn').style.display='block';
 }
 
 //saves a filename to sessionstorage, this is the file that you upload text to, and all the api calls will work with
@@ -53,7 +56,12 @@ function displayDials(){
 	if (inputtedTextToggle.checked == true){
 		inputtedTextDisplay.style.display = "block";
 		var textValue = document.getElementById("textInputContents").value;
-		document.getElementById("inputtedText").innerHTML = textValue;
+		if(textValue == '' || textValue == null){
+			document.getElementById("inputtedText").innerHTML = 'Text was empty';
+		}
+		else{
+			document.getElementById("inputtedText").innerHTML = textValue;
+		}
 	} else {
 		inputtedTextDisplay.style.display = "none";
 	}
@@ -65,6 +73,15 @@ function displayDials(){
 		spellingErrorsDisplay.style.display = "block";
 	} else {
 		spellingErrorsDisplay.style.display = "none";
+	}
+
+	//word count toggle
+	var wcToggle = document.getElementById("wordCountToggle");
+	var wcDisplay = document.getElementById("wordCountDisplay");
+	if (wcToggle.checked == true){
+		wcDisplay.style.display = "block";
+	} else {
+		wcDisplay.style.display = "none";
 	}
 
 	//Subjectivity Toggle
@@ -166,7 +183,7 @@ function setSubjectivityValue(subjectivityValue){
 	  var target = document.getElementById('subDial'); // your canvas element
 	  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 	  gauge.setTextField(document.getElementById('subVal'));
-	  gauge.maxValue = 99; // set max gauge value
+	  gauge.maxValue = 100; // set max gauge value
 	  gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
 	  gauge.set(subjectivityValue); // set actual value
@@ -203,7 +220,7 @@ function setObjectivityValue(objectivityValue){
 	  var target = document.getElementById('objDial'); // your canvas element
 	  var gauge2 = new Gauge(target).setOptions(opts); // create sexy gauge!
 	  gauge2.setTextField(document.getElementById('objVal'));
-	  gauge2.maxValue = 99; // set max gauge value
+	  gauge2.maxValue = 100; // set max gauge value
 	  gauge2.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	  gauge2.animationSpeed = 32; // set animation speed (32 is default value)
 	  gauge2.set(objectivityValue); // set actual value
@@ -227,19 +244,19 @@ function setPolarityValue(polarityValue, nounName){
 		highDpiSupport: true,     // High resolution support
 
 		staticZones: [
-			{strokeStyle: "#F03E3E", min: -99, max: -75}, // red - highly negative
+			{strokeStyle: "#F03E3E", min: -100, max: -75}, // red - highly negative
 			{strokeStyle: "#FFDD00", min: -25, max: 25}, // Yellow - moderate
 			{strokeStyle: "#FAAC58", min: -74, max: -26}, // orange - negative
 			{strokeStyle: "#66ff66", min: 26, max: 74}, // green - positive
-			{strokeStyle: "#32b3dd", min: 75, max: 99}  // blue - highly positive
+			{strokeStyle: "#32b3dd", min: 75, max: 100}  // blue - highly positive
 		 ],
 		
 	};
 	  var target = document.getElementById('polDial'); // your canvas element
 	  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 	  gauge.setTextField(document.getElementById('polarityVal'));
-	  gauge.maxValue = 99; // set max gauge value
-	  gauge.setMinValue(-99);  // Prefer setter over gauge.minValue = 0
+	  gauge.maxValue = 100; // set max gauge value
+	  gauge.setMinValue(-100);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
 	  gauge.set(polarityValue); // set actual value
 
@@ -274,11 +291,21 @@ function setPunchline(polarityValue){
 	  }
 }
 
+function setSpellingErrors(val, percentval){
+	document.getElementById('spellingErrors').innerHTML = val;
+	document.getElementById('percentval').innerHTML = percentval; 
+}
+
+function setWordCount(val){
+	document.getElementById('wordCountVal').innerHTML = val;
+}
+
 //call like so: makeAPICall( get or post, url with params, (result)=> { do stuff with result })
 function makeAPICall(method, URL, callback){
 	$.ajax({
 		url: URL,
 		type: method,
+		async: true,
 		success: callback,
 		error:function(error){
 			console.log(`There was an error with call-${URL}`);

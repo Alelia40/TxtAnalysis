@@ -34,7 +34,7 @@ function onSubmitPressed() {
 	displayResultsBox();
 
 	//creates an api call to makereport
-
+	
 
 	//based on results, sets values
 	setSubjectivityValue(10);

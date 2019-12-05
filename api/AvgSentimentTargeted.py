@@ -27,8 +27,8 @@ avg_subj = sum(subj) / len(subj)
 
 print("Content-Type: text/plain\r\n\r\n")
 print()
-print("{ \"Polarity\":" + str(avg_pol) + " }")
-print("{ \"Subjectivity\":" + str(avg_subj) + " }")
+print("{\n\"Polarity\":" + str(avg_pol) + ",")
+print("\"Subjectivity\":" + str(avg_subj) + "\n}")
 print(fs.getvalue("a"))
 
 text_file.close()

@@ -14,7 +14,7 @@ function onUploadText(){
 		document.getElementById('makeReportBtn').style.display='block';
 	})
 
-	
+
 }
 
 //saves a filename to sessionstorage, this is the file that you upload text to, and all the api calls will work with
@@ -34,7 +34,7 @@ function onSubmitPressed() {
 	displayResultsBox();
 
 	//creates an api call to makereport
-	
+
 
 	//based on results, sets values
 	setSubjectivityValue(10);
@@ -50,7 +50,7 @@ function makeRequestString(){
 }
 
 function displayDials(){
-	
+
 	//Show Input Text Toggle
 	var inputtedTextToggle = document.getElementById("inputtedTextToggle");
 	var inputtedTextDisplay = document.getElementById("inputtedTextDisplay");
@@ -148,7 +148,7 @@ function onPolarityClick(){
 	var subject = document.getElementById("polaritySubject").value;
 	var filename = getServerSave();
 
-	makeAPICall('GET', `http://25.7.255.193/usr/lib/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?${filename}&${subject}`, (result) => {
+	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?${filename}&${subject}`, (result) => {
 		console.log(result);
 	})
 }
@@ -179,7 +179,7 @@ function setSubjectivityValue(subjectivityValue){
 			subLength: 0.5,
 			subWidth: 0.6,
 			subColor: '#666666'
-		  }  
+		  }
 	  };
 	  var target = document.getElementById('subDial'); // your canvas element
 	  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
@@ -216,7 +216,7 @@ function setObjectivityValue(objectivityValue){
 			subLength: 0.5,
 			subWidth: 0.6,
 			subColor: '#666666'
-		  }  
+		  }
 	  };
 	  var target = document.getElementById('objDial'); // your canvas element
 	  var gauge2 = new Gauge(target).setOptions(opts); // create sexy gauge!
@@ -251,7 +251,7 @@ function setPolarityValue(polarityValue, nounName){
 			{strokeStyle: "#66ff66", min: 26, max: 74}, // green - positive
 			{strokeStyle: "#32b3dd", min: 75, max: 100}  // blue - highly positive
 		 ],
-		
+
 	};
 	  var target = document.getElementById('polDial'); // your canvas element
 	  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
@@ -294,7 +294,7 @@ function setPunchline(polarityValue){
 
 function setSpellingErrors(val, percentval){
 	document.getElementById('spellingErrors').innerHTML = val;
-	document.getElementById('percentval').innerHTML = percentval; 
+	document.getElementById('percentval').innerHTML = percentval;
 }
 
 function setWordCount(val){

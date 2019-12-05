@@ -6,14 +6,15 @@ function onUploadText(){
 	var serversave = sessionStorage.getItem("ServerFile");
 	var textValue = document.getElementById("textInputContents").value;
 	//make an http call to the api to upload text in the textbox to the serversave file
-	var url = `http://25.7.255.193/usr/lib/cgi-bin/Repo/TxtAnalysis/api/ImportText.py?${textValue}`;
+	var url = `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/ImportText.py?filename=${serversave}&text=${textValue}`;
 	console.log(url);
 	makeAPICall('POST', url, (result) => {
 		console.log(result);
+		//enable the generate report btn
+		document.getElementById('makeReportBtn').style.display='block';
 	})
 
-	//enable the generate report btn
-	document.getElementById('makeReportBtn').style.display='block';
+	
 }
 
 //saves a filename to sessionstorage, this is the file that you upload text to, and all the api calls will work with

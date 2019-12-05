@@ -5,15 +5,15 @@ import cgi
 
 cgitb.enable()
 fs = cgi.FieldStorage()
-full = -1
 
-text_file_name = sys.argv[1]
+text_file_name = fs.getvalue('filename')
 path_to_file = "/usr/lib/cgi-bin/textfiles/" + text_file_name
 text_file = open(path_to_file, "r")
 text = text_file.read()
 blob = TextBlob(text)
+text_file.close()
 
-subject = sys.argv[2]
+subject = fs.getvalue('subject')
 pol = []
 subj = []
 for s in blob.sentences:
@@ -29,6 +29,3 @@ print("Content-Type: text/plain\r\n\r\n")
 print()
 print("{\n\"Polarity\":" + str(avg_pol) + ",")
 print("\"Subjectivity\":" + str(avg_subj) + "\n}")
-print(fs.getvalue("a"))
-
-text_file.close()

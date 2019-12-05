@@ -1,15 +1,13 @@
 import cgi
 import cgitb
-import sys
 from textblob import TextBlob
 
 from api import MostUsedWords, AvgSentenceSentiment, SpellingErrorsPercent, SpellingErrors
 
 cgitb.enable()
 fs = cgi.FieldStorage()
-full = -1
 
-text_file_name = sys.argv[1]
+text_file_name = fs.getvalue('filename')
 path_to_file = "/usr/lib/cgi-bin/textfiles/" + text_file_name
 text_file = open(path_to_file, "r")
 text = text_file.read()
@@ -29,4 +27,3 @@ return_string = ("\"SpellErrors\": " + str(spell_errors) +
 print("Content-Type: text/plain\r\n\r\n")
 print()
 print("{\n"+return_string+"\n}")
-print(fs.getvalue("a"))

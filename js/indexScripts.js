@@ -4,7 +4,13 @@ function onUploadText(){
 	generateServerSave();
 
 	var serversave = sessionStorage.getItem("ServerFile");
+	var textValue = document.getElementById("textInputContents").value;
 	//make an http call to the api to upload text in the textbox to the serversave file
+	var url = `http://25.7.255.193/usr/lib/cgi-bin/api/ImportText.py&${textValue}`;
+	console.log(url);
+	makeAPICall('POST', url, (result) => {
+		console.log(result);
+	})
 }
 
 //saves a filename to sessionstorage, this is the file that you upload text to, and all the api calls will work with
@@ -12,6 +18,11 @@ function generateServerSave(){
 	var rn = new Date().getTime();
 	var fileName = "file-"+rn+".txt";
 	sessionStorage.setItem("ServerFile", fileName);
+}
+
+//helper to get the save file name
+function getServerSave(){
+	return sessionStorage.getItem("serverFile");
 }
 
 function onSubmitPressed() {
@@ -114,7 +125,14 @@ function toggleAnalysisFilter(){
 }
 
 function onPolarityClick(){
-	document.getElementById("polarityVal").innerHTML = polarityValue;
+	console.log("checking polarity");
+
+	var subject = document.getElementById("polaritySubject").value;
+	var filename = getServerSave();
+
+	makeAPICall('GET', `http://25.7.255.193/usr/lib/cgi-bin/api/AvgSentimentTargeted.py&${filename}&${subject}`, (result) => {
+		console.log(result);
+	})
 }
 
 function setSubjectivityValue(subjectivityValue){

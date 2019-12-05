@@ -6,7 +6,7 @@ function onUploadText(){
 	var serversave = sessionStorage.getItem("ServerFile");
 	var textValue = document.getElementById("textInputContents").value;
 	//make an http call to the api to upload text in the textbox to the serversave file
-	var url = `http://25.7.255.193/usr/lib/cgi-bin/api/ImportText.py&${textValue}`;
+	var url = `http://25.7.255.193/usr/lib/cgi-bin/api/ImportText.py?${textValue}`;
 	console.log(url);
 	makeAPICall('POST', url, (result) => {
 		console.log(result);
@@ -130,7 +130,7 @@ function onPolarityClick(){
 	var subject = document.getElementById("polaritySubject").value;
 	var filename = getServerSave();
 
-	makeAPICall('GET', `http://25.7.255.193/usr/lib/cgi-bin/api/AvgSentimentTargeted.py&${filename}&${subject}`, (result) => {
+	makeAPICall('GET', `http://25.7.255.193/usr/lib/cgi-bin/api/AvgSentimentTargeted.py?${filename}&${subject}`, (result) => {
 		console.log(result);
 	})
 }

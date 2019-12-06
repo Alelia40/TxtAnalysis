@@ -65,13 +65,13 @@ text_file.close()
 spell_errors = SpellingErrors(blob)
 spell_errors_percent = SpellingErrorsPercent(blob)
 avg_pol, avg_subj = AvgSentenceSentiment(blob)
-top_five_dict = MostUsedWords(blob)
-dict_json = json.dumps(top_five_dict)
+#top_five_dict = MostUsedWords(blob)
+#dict_json = json.dumps(top_five_dict)
 return_string = ("\"SpellErrors\": " + str(spell_errors) +
                  ",\n\"SpellErrorsPercent\": " + str(spell_errors_percent) +
                  ",\n\"AveragePolarity\": " + str(avg_pol) +
-                 ",\n\"AverageSubjectivity\": " + str(avg_subj) +
-                 ",\n\"TopFiveWords\": " + dict_json)
+                 ",\n\"AverageSubjectivity\": " + str(avg_subj))
+#                 ",\n\"TopFiveWords\": " + dict_json)
 
 print("Content-Type: text/plain\r\n\r\n")
 print()

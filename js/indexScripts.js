@@ -40,6 +40,7 @@ function onSubmitPressed() {
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?filename=${filename}`, (result) => {
 		myJSON = JSON.parse(result);
 
+		alert(result);
 		//based on results, sets values
 		document.getElementById('spellingErrors').innerHTML = myJSON.SpellErrors;
 		document.getElementById('spellingPercent').innerHTML = myJSON.SpellErrorsPercent;
@@ -193,7 +194,7 @@ function setPolarityValue(polarityValue){
 	  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 	  gauge.setTextField(document.getElementById('subVal'));
 	  gauge.maxValue = 100; // set max gauge value
-	  gauge.setMinValue(-100);  // Prefer setter over gauge.minValue = 0
+	  gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
 	  gauge.set(polarityValue * 100); // set actual value
 }

@@ -46,7 +46,7 @@ def AvgSentenceSentiment(blob):
     return avg_pol, avg_subj
 
 
-cgitb.enable()
+cgitb.enable(0, '/usr/lib/cgi-bin/Repo/TxtAnalysis')
 fs = cgi.FieldStorage()
 
 text_file_name = fs.getvalue('filename')

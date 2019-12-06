@@ -26,7 +26,7 @@ function generateServerSave(){
 
 //helper to get the save file name
 function getServerSave(){
-	return sessionStorage.getItem("serverFile");
+	return sessionStorage.getItem("ServerFile");
 }
 
 function onSubmitPressed() {
@@ -36,9 +36,14 @@ function onSubmitPressed() {
 	//creates an api call to makereport
 	var filename = getServerSave();
 
-	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?${filename}`, (result) => {
-		alert(result);
+	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?filename=${filename}`, (result) => {
+		var myJSON = JSON.parse(result);
+		alert("got JSON stuff");
+		alert(myJSON);
+		alert(myJSON.SpellErrorsPercent);
 	})
+
+
 
 
 

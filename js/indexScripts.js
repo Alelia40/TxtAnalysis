@@ -47,6 +47,7 @@ function onSubmitPressed() {
 		document.getElementById('spellingPercent').innerHTML = myJSON.SpellErrorsPercent;
 		setSubjectivityValue(result.AverageSubjectivity * 100);
 		setPolarityValue(result.AveragePolarity * 100);
+		setTargettedAnalysisValues(result.AveragePolarity, result.AverageSubjectivity);
 	});
 }
 

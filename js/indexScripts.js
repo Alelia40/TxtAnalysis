@@ -39,11 +39,8 @@ function onSubmitPressed() {
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?filename=${filename}`, (result) => {
 		var myJSON = JSON.parse(result);
 		alert(myJSON);
-	})
 
-
-
-
+	});
 
 	alert(myJSON.spellErrors);
 	alert(myJSON.spellErrorsPercent);
@@ -53,6 +50,8 @@ function onSubmitPressed() {
 	document.getElementById('spellingPercent').value = myJSON.spellErrorsPercent;
 	setSubjectivityValue(myJSON.AverageSubjectivity);
 	setObjectivityValue(myJSON.AveragePolarity);
+
+
 }
 
 

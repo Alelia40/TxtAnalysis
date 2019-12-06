@@ -45,9 +45,8 @@ function onSubmitPressed() {
 		console.log(myJSON.SpellErrorsPercent);
 		document.getElementById('spellingErrors').innerHTML = myJSON.SpellErrors;
 		document.getElementById('spellingPercent').innerHTML = myJSON.SpellErrorsPercent;
-		setSubjectivityValue(result.AverageSubjectivity * 100);
-		setPolarityValue(result.AveragePolarity * 100);
-		setTargettedAnalysisValues(result.AveragePolarity, result.AverageSubjectivity);
+		setSubjectivityValue(myJSON.AverageSubjectivity * 100);
+		setPolarityValue(myJSON.AveragePolarity * 100);
 	});
 }
 
@@ -161,6 +160,7 @@ function onSentimentClick(){
 
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?filename=${filename}&subject=${subject}`, (result) => {
 		console.log(result);
+		//setTargettedAnalysisValues(result.AveragePolarity, result.AverageSubjectivity);
 	})
 }
 
@@ -196,7 +196,7 @@ function setPolarityValue(polarityValue){
 	  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 	  gauge.setTextField(document.getElementById('subVal'));
 	  gauge.maxValue = 100; // set max gauge value
-	  gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+	  gauge.setMinValue(-100);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
 	  gauge.set(polarityValue); // set actual value
 }

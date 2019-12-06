@@ -44,7 +44,7 @@ function onSubmitPressed() {
 		document.getElementById('spellingErrors').innerHTML = myJSON.SpellErrors;
 		document.getElementById('spellingPercent').innerHTML = myJSON.SpellErrorsPercent;
 		setSubjectivityValue(result.AverageSubjectivity);
-		setpolarityValue(result.AveragePolarity);
+		setPolarityValue(result.AveragePolarity);
 	});
 }
 
@@ -161,7 +161,7 @@ function onSentimentClick(){
 	})
 }
 
-function setSubjectivityValue(subjectivityValue){
+function setPolarityValue(polarityValueValue){
 	var opts = {
 		angle: -0.20, // The span of the gauge arc
 		lineWidth: 0.44, // The line thickness
@@ -193,9 +193,9 @@ function setSubjectivityValue(subjectivityValue){
 	  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
 	  gauge.setTextField(document.getElementById('subVal'));
 	  gauge.maxValue = 100; // set max gauge value
-	  gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+	  gauge.setMinValue(-100);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-	  gauge.set(subjectivityValue); // set actual value
+	  gauge.set(polarityValue * 100); // set actual value
 }
 
 function setSubjectivityValue(subjectivityValue){
@@ -226,9 +226,9 @@ function setSubjectivityValue(subjectivityValue){
 			subColor: '#666666'
 		  }
 	  };
-	  var target = document.getElementById('objDial'); // your canvas element
+	  var target = document.getElementById('polDial'); // your canvas element
 	  var gauge2 = new Gauge(target).setOptions(opts); // create sexy gauge!
-	  gauge2.setTextField(document.getElementById('objVal'));
+	  gauge2.setTextField(document.getElementById('polVal'));
 	  gauge2.maxValue = 100; // set max gauge value
 	  gauge2.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	  gauge2.animationSpeed = 32; // set animation speed (32 is default value)
@@ -270,7 +270,7 @@ function setSentimentValue(sentimentValue, nounName){
 	  gauge.set(sentimentValue * 100); // set actual value
 
 	  //set the punchline to match the dial value
-	  setPunchline(sentimentValue);
+	  setPunchline(sentimentValue * 100);
 }
 
 //function for polarity dial that sets a punchline to summarize the value of the dial

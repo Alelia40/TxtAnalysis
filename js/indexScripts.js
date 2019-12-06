@@ -38,6 +38,7 @@ function onSubmitPressed() {
 
 
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?filename=${filename}`, (result) => {
+	    console.log(result);
 		myJSON = JSON.parse(result);
 
 		//based on results, sets values

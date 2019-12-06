@@ -12,22 +12,27 @@ def MostUsedWords(blob):
 def SpellingErrors(blob):
     counter = 0
 
-    for word in blob.sentences.words:
-        possible_words = word.spellcheck()
-        if word != possible_words[0]:
-            counter += 1
+    for sentence in blob.sentences:
+        words = sentence.split()
+        for word in words:
+            possible_words = word.spellcheck()
+            if word != possible_words[0]:
+                counter += 1
 
     return counter
 
 
 def SpellingErrorsPercent(blob):
     counter = 0
-    word_count = blob.sentences.words.length
+    word_count = 0
 
-    for word in blob.sentences.words:
-        possible_words = word.spellcheck()
-        if word != possible_words[0]:
-            counter += 1
+    for sentence in blob.sentences:
+        words = sentence.split()
+        for word in words:
+            word_count += 1
+            possible_words = word.spellcheck()
+            if word != possible_words[0]:
+                counter += 1
 
     percent = counter / word_count * 100
     return percent

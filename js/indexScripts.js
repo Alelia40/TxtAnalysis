@@ -283,8 +283,7 @@ function setTargetSubjectivityDial(subjectivityValue){
 	  gauge2.set(subjectivityValue); // set actual value
 }
 
-function setTargetPolarityDial(sentimentValue, nounName){
-	document.getElementById('sentimentSubject').innerHTML = nounName;
+function setTargetPolarityDial(sentimentValue){
 
 	var opts = {
 		angle: -0.2, // The span of the gauge arc

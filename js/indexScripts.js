@@ -44,8 +44,8 @@ function onSubmitPressed() {
 		//based on results, sets values
 		document.getElementById('spellingErrors').innerHTML = myJSON.SpellErrors;
 		document.getElementById('spellingPercent').innerHTML = myJSON.SpellErrorsPercent;
-		setSubjectivityValue(result.AverageSubjectivity);
-		setPolarityValue(result.AveragePolarity);
+		setSubjectivityValue(result.AverageSubjectivity * 100);
+		setPolarityValue(result.AveragePolarity * 100);
 	});
 }
 
@@ -196,7 +196,7 @@ function setPolarityValue(polarityValue){
 	  gauge.maxValue = 100; // set max gauge value
 	  gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-	  gauge.set(polarityValue * 100); // set actual value
+	  gauge.set(polarityValue); // set actual value
 }
 
 function setSubjectivityValue(subjectivityValue){
@@ -233,7 +233,7 @@ function setSubjectivityValue(subjectivityValue){
 	  gauge2.maxValue = 100; // set max gauge value
 	  gauge2.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	  gauge2.animationSpeed = 32; // set animation speed (32 is default value)
-	  gauge2.set(subjectivityValue * 100); // set actual value
+	  gauge2.set(subjectivityValue); // set actual value
 }
 
 function setSentimentValue(sentimentValue, nounName){
@@ -268,10 +268,10 @@ function setSentimentValue(sentimentValue, nounName){
 	  gauge.maxValue = 100; // set max gauge value
 	  gauge.setMinValue(-100);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-	  gauge.set(sentimentValue * 100); // set actual value
+	  gauge.set(sentimentValue); // set actual value
 
 	  //set the punchline to match the dial value
-	  setPunchline(sentimentValue * 100);
+	  setPunchline(sentimentValue);
 }
 
 //function for polarity dial that sets a punchline to summarize the value of the dial

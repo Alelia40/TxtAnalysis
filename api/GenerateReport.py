@@ -17,7 +17,7 @@ def SpellingErrors(blob):
         words = sentence.split()
         for word in words:
             possible_words = word.spellcheck()
-            if word != possible_words[0]:
+            if word != possible_words[0][0]:
                 counter += 1
 
     return counter
@@ -46,8 +46,15 @@ def AvgSentenceSentiment(blob):
         pol.append(s.polarity)
         subj.append(s.subjectivity)
 
-    avg_pol = sum(pol) / len(pol)
-    avg_subj = sum(subj) / len(subj)
+    if len(pol) == 0:
+        avg_pol = 0
+    else:
+        avg_pol = sum(pol) / len(pol)
+
+    if len(subj) == 0:
+        avg_subj = 0
+    else:
+        avg_subj = sum(subj) / len(subj)
 
     return avg_pol, avg_subj
 

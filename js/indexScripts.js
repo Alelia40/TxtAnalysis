@@ -26,7 +26,7 @@ function generateServerSave(){
 
 //helper to get the save file name
 function getServerSave(){
-	return sessionStorage.getItem("serverFile");
+	return sessionStorage.getItem("ServerFile");
 }
 
 function onSubmitPressed() {

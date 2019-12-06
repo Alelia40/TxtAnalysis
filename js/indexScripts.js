@@ -44,8 +44,8 @@ function onSubmitPressed() {
 		alert(myJSON.SpellErrorsPercent);
 
 		//based on results, sets values
-		document.getElementById('spellingErrors').value = myJSON.SpellErrors;
-		document.getElementById('spellingPercent').value = myJSON.SpellErrorsPercent;
+		document.getElementById('spellingErrors').val = myJSON.SpellErrors;
+		document.getElementById('spellingPercent').val = myJSON.SpellErrorsPercent;
 		setSubjectivityValue(result.AverageSubjectivity);
 		setObjectivityValue(result.AveragePolarity);
 	});

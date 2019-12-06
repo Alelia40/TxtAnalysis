@@ -39,7 +39,6 @@ function onSubmitPressed() {
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?filename=${filename}`, (result) => {
 		var myJSON = JSON.parse(result);
 		alert("got JSON stuff");
-		alert(myJSON);
 		alert(myJSON.SpellErrorsPercent);
 	})
 
@@ -157,7 +156,9 @@ function toggleAnalysisFilter(){
 function onPolarityClick(){
 	console.log("checking polarity");
 
-	var subject = document.getElementById("polaritySubject").value;
+	var subject = document.getElementById("polarityCheck").value;
+
+	document.getElementById("polaritySubject").value = subject;
 	var filename = getServerSave();
 
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?${filename}&${subject}`, (result) => {

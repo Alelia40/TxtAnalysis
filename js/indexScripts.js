@@ -36,9 +36,11 @@ function onSubmitPressed() {
 	//creates an api call to makereport
 	var filename = getServerSave();
 
-	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?${filename}`, (result) => {
+	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?filename=${filename}`, (result) => {
 		alert(result.SpellErrors);
 	})
+
+
 
 
 

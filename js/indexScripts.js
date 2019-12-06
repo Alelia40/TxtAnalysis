@@ -45,10 +45,12 @@ function onSubmitPressed() {
 
 
 
+
 	//based on results, sets values
-	setSubjectivityValue(10);
-	setObjectivityValue(10);
-	setPolarityValue(0, "N/A");
+	document.getElementById('spellingErrors').value = myJSON.spellErrors;
+	document.getElementById('spellingPercent').value = myJSON.spellErrorsPercent;
+	setSubjectivityValue(myJSON.AverageSubjectivity);
+	setObjectivityValue(myJSON.AveragePolarity);
 }
 
 

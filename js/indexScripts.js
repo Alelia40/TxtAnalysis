@@ -40,17 +40,18 @@ function onSubmitPressed() {
 		alert(result);
 		var myJSON = JSON.parse(result);
 		alert(JSON.stringify(myJSON));
+		alert(myJSON);
 
 	});
 
-	alert(myJSON.spellErrors);
-	alert(myJSON.spellErrorsPercent);
+	alert(result.spellErrors);
+	alert(result.spellErrorsPercent);
 
 	//based on results, sets values
-	document.getElementById('spellingErrors').value = myJSON.spellErrors;
-	document.getElementById('spellingPercent').value = myJSON.spellErrorsPercent;
-	setSubjectivityValue(myJSON.AverageSubjectivity);
-	setObjectivityValue(myJSON.AveragePolarity);
+	document.getElementById('spellingErrors').value = result.spellErrors;
+	document.getElementById('spellingPercent').value = result.spellErrorsPercent;
+	setSubjectivityValue(result.AverageSubjectivity);
+	setObjectivityValue(result.AveragePolarity);
 
 
 }

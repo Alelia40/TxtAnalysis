@@ -159,7 +159,7 @@ function onPolarityClick(){
 	document.getElementById("polaritySubject").innerHTML = subject;
 	var filename = getServerSave();
 
-	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?${filename}&${subject}`, (result) => {
+	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?filename=${filename}&subject=${subject}`, (result) => {
 		console.log(result);
 	})
 }

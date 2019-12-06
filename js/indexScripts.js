@@ -37,18 +37,23 @@ function onSubmitPressed() {
 	var filename = getServerSave();
 
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?filename=${filename}`, (result) => {
+		alert(result);
 		var myJSON = JSON.parse(result);
-	})
+		alert(JSON.stringify(myJSON));
+		alert(myJSON);
 
+	});
 
-
-
-
+	alert(result.spellErrors);
+	alert(result.spellErrorsPercent);
 
 	//based on results, sets values
-	setSubjectivityValue(10);
-	setObjectivityValue(10);
-	setPolarityValue(0, "N/A");
+	document.getElementById('spellingErrors').value = result.spellErrors;
+	document.getElementById('spellingPercent').value = result.spellErrorsPercent;
+	setSubjectivityValue(result.AverageSubjectivity);
+	setObjectivityValue(result.AveragePolarity);
+
+
 }
 
 

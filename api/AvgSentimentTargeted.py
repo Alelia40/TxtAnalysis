@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import cgitb
 from textblob import TextBlob
 import cgi

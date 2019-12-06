@@ -158,10 +158,10 @@ function onPolarityClick(){
 
 	var subject = document.getElementById("polarityCheck").value;
 
-	document.getElementById("polaritySubject").value = subject;
+	document.getElementById("polaritySubject").innerHTML = subject;
 	var filename = getServerSave();
 
-	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?${filename}&${subject}`, (result) => {
+	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?${filename}?${subject}`, (result) => {
 		console.log(result);
 	})
 }

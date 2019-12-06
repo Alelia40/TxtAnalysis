@@ -14,7 +14,6 @@ function onUploadText(){
 		document.getElementById('makeReportBtn').style.display='block';
 	})
 
-
 }
 
 //saves a filename to sessionstorage, this is the file that you upload text to, and all the api calls will work with
@@ -42,6 +41,7 @@ function onSubmitPressed() {
 
 		alert(result);
 		//based on results, sets values
+		console.log(myJSON.SpellErrorsPercent);
 		document.getElementById('spellingErrors').innerHTML = myJSON.SpellErrors;
 		document.getElementById('spellingPercent').innerHTML = myJSON.SpellErrorsPercent;
 		setSubjectivityValue(result.AverageSubjectivity * 100);
@@ -236,7 +236,49 @@ function setSubjectivityValue(subjectivityValue){
 	  gauge2.set(subjectivityValue); // set actual value
 }
 
-function setSentimentValue(sentimentValue, nounName){
+function setTargettedAnalysisValues(sub, pol){
+	setTargetPolarityDial(pol);
+	setTargetSubjectivityDial(sub);
+}
+
+function setTargetSubjectivityDial(subjectivityValue){
+	var opts = {
+		angle: -0.20, // The span of the gauge arc
+		lineWidth: 0.44, // The line thickness
+		radiusScale: 1, // Relative radius
+		pointer: {
+		  length: 0.6, // // Relative to gauge radius
+		  strokeWidth: 0.035, // The thickness
+		  color: '#000000' // Fill color
+		},
+		limitMax: true,     // If false, max value increases automatically if value > maxValue
+		limitMin: true,     // If true, the min value of the gauge will be fixed
+		colorStart: '#bde7f4',   // Colors
+		colorStop: '#32b3dd',    // just experiment with them
+		strokeColor: '#E0E0E0',  // to see which ones work best for you
+		generateGradient: true,
+		highDpiSupport: true,     // High resolution support
+		renderTicks: {
+			divisions: 5,
+			divWidth: 1.1,
+			divLength: 0.7,
+			divColor: '#333333',
+			subDivisions: 3,
+			subLength: 0.5,
+			subWidth: 0.6,
+			subColor: '#666666'
+		  }
+	  };
+	  var target = document.getElementById('targetSubDial'); // your canvas element
+	  var gauge2 = new Gauge(target).setOptions(opts); // create sexy gauge!
+	  gauge2.setTextField(document.getElementById('targetSubVal'));
+	  gauge2.maxValue = 100; // set max gauge value
+	  gauge2.setMinValue(0);  // Prefer setter over gauge.minValue = 0
+	  gauge2.animationSpeed = 32; // set animation speed (32 is default value)
+	  gauge2.set(subjectivityValue); // set actual value
+}
+
+function setTargetPolarityDial(sentimentValue, nounName){
 	document.getElementById('sentimentSubject').innerHTML = nounName;
 
 	var opts = {
@@ -262,9 +304,9 @@ function setSentimentValue(sentimentValue, nounName){
 		 ],
 
 	};
-	  var target = document.getElementById('polDial'); // your canvas element
+	  var target = document.getElementById('targetPolDial'); // your canvas element
 	  var gauge = new Gauge(target).setOptions(opts); // create sexy gauge!
-	  gauge.setTextField(document.getElementById('polarityVal'));
+	  gauge.setTextField(document.getElementById('targetPolVal'));
 	  gauge.maxValue = 100; // set max gauge value
 	  gauge.setMinValue(-100);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
@@ -276,7 +318,7 @@ function setSentimentValue(sentimentValue, nounName){
 
 //function for polarity dial that sets a punchline to summarize the value of the dial
 function setPunchline(sentimentValue){
-	var punchline = document.getElementById('sentPunch');
+	var punchline = document.getElementById('targetPolPunch');
 
 	  if(sentimentValue >= -99 && sentimentValue <= -75){
 		  punchline.innerHTML = " - Very Negative"

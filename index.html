@@ -87,11 +87,16 @@
 
 			<div id="sentimentDisplay" class="largeDial">
 				<h2>Targeted Sentiment Analysis</h2>
+				
 				<input type="text" id="sentimentCheck" placeholder="Enter noun here" /> <button class="round-button" onclick="onSentimentClick()">Check
 					Sentiment</button>
 				<p>Sentiment towards: <span style="font-style:italic" id="sentimentSubject"></span></p>
-				<canvas id="sentDial" height="150" width="200"></canvas>
-				<label id="sentimentVal"></label><label id="sentPunch"></label>
+				<p>Targeted polarity</p>
+				<canvas id="targetPolDial" height="150" width="200"></canvas>
+				<label id="targetPolVal"></label><label id="targetPolPunch"></label>
+				<p>Targeted subjectivity</p>
+				<canvas id="targetSubDial" height="150" width="200"></canvas>
+				<label id="targetSubVal"></label>
 			</div>
 
 		</div>

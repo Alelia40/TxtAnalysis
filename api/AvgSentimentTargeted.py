@@ -2,7 +2,8 @@ import cgitb
 from textblob import TextBlob
 import cgi
 
-cgitb.enable()
+#cgitb.enable()
+cgitb.enable(0, '/usr/lib/cgi-bin/Repo/TxtAnalysis')
 fs = cgi.FieldStorage()
 
 text_file_name = fs.getvalue('filename')

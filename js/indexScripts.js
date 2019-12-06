@@ -161,7 +161,7 @@ function onSentimentClick(){
 	})
 }
 
-function setPolarityValue(polarityValueValue){
+function setPolarityValue(polarityValue){
 	var opts = {
 		angle: -0.20, // The span of the gauge arc
 		lineWidth: 0.44, // The line thickness

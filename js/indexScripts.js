@@ -85,13 +85,13 @@ function displayDials(){
 	}
 
 	//word count toggle
-	var wcToggle = document.getElementById("wordCountToggle");
-	var wcDisplay = document.getElementById("wordCountDisplay");
-	if (wcToggle.checked == true){
-		wcDisplay.style.display = "block";
-	} else {
-		wcDisplay.style.display = "none";
-	}
+	//var wcToggle = document.getElementById("wordCountToggle");
+	//var wcDisplay = document.getElementById("wordCountDisplay");
+	//if (wcToggle.checked == true){
+	//	wcDisplay.style.display = "block";
+	//} else {
+   //	wcDisplay.style.display = "none";
+	//}
 
 	//Subjectivity Toggle
 	var subjectivityToggle = document.getElementById("subjectivityToggle");

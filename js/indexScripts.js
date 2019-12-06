@@ -37,8 +37,9 @@ function onSubmitPressed() {
 	var filename = getServerSave();
 
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?filename=${filename}`, (result) => {
+		alert(result);
 		var myJSON = JSON.parse(result);
-		alert(myJSON);
+		alert(JSON.stringify(myJSON));
 
 	});
 

@@ -110,12 +110,12 @@ function displayDials(){
 	}
 
 	//Sentiment Toggle
-	var SentimentToggle = document.getElementById("SentimentToggle");
-	var SentimentDisplay = document.getElementById("SentimentDisplay");
-	if (SentimentToggle.checked == true){
-		SentimentDisplay.style.display = "block";
+	var sentimentToggle = document.getElementById("sentimentToggle");
+	var sentimentDisplay = document.getElementById("sentimentDisplay");
+	if (sentimentToggle.checked == true){
+		sentimentDisplay.style.display = "block";
 	} else {
-		SentimentDisplay.style.display = "none";
+		sentimentDisplay.style.display = "none";
 	}
 }
 

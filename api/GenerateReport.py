@@ -36,7 +36,7 @@ def SpellingErrorsPercent(blob):
                 counter += 1
 
     percent = counter / word_count * 100
-    return percent
+    return int(percent)
 
 
 def AvgSentenceSentiment(blob):

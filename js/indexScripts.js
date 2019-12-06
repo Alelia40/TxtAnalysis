@@ -41,11 +41,12 @@ function onSubmitPressed() {
 	    console.log(result);
 		myJSON = JSON.parse(result);
 
+		alert(result);
 		//based on results, sets values
 		document.getElementById('spellingErrors').innerHTML = myJSON.SpellErrors;
 		document.getElementById('spellingPercent').innerHTML = myJSON.SpellErrorsPercent;
-		setSubjectivityValue(result.AverageSubjectivity);
-		setObjectivityValue(result.AveragePolarity);
+		setSubjectivityValue(result.AverageSubjectivity * 100);
+		setPolarityValue(result.AveragePolarity * 100);
 	});
 }
 
@@ -101,15 +102,6 @@ function displayDials(){
 		subjectivityDisplay.style.display = "none";
 	}
 
-	//Subjectivity Toggle
-	var objectivityToggle = document.getElementById("objectivityToggle");
-	var objectivityDisplay = document.getElementById("objectivityDisplay");
-	if (objectivityToggle.checked == true){
-		objectivityDisplay.style.display = "block";
-	} else {
-		objectivityDisplay.style.display = "none";
-	}
-
 	//Polarity Toggle
 	var polarityToggle = document.getElementById("polarityToggle");
 	var polarityDisplay = document.getElementById("polarityDisplay");
@@ -117,6 +109,15 @@ function displayDials(){
 		polarityDisplay.style.display = "block";
 	} else {
 		polarityDisplay.style.display = "none";
+	}
+
+	//Sentiment Toggle
+	var sentimentToggle = document.getElementById("sentimentToggle");
+	var sentimentDisplay = document.getElementById("sentimentDisplay");
+	if (sentimentToggle.checked == true){
+		sentimentDisplay.style.display = "block";
+	} else {
+		sentimentDisplay.style.display = "none";
 	}
 }
 
@@ -149,12 +150,12 @@ function toggleAnalysisFilter(){
 	}
 }
 
-function onPolarityClick(){
+function onSentimentClick(){
 	console.log("checking polarity");
 
-	var subject = document.getElementById("polarityCheck").value;
+	var subject = document.getElementById("sentimentCheck").value;
 
-	document.getElementById("polaritySubject").innerHTML = subject;
+	document.getElementById("sentimentSubject").innerHTML = subject;
 	var filename = getServerSave();
 
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?filename=${filename}&subject=${subject}`, (result) => {
@@ -162,7 +163,7 @@ function onPolarityClick(){
 	})
 }
 
-function setSubjectivityValue(subjectivityValue){
+function setPolarityValue(polarityValue){
 	var opts = {
 		angle: -0.20, // The span of the gauge arc
 		lineWidth: 0.44, // The line thickness
@@ -196,10 +197,10 @@ function setSubjectivityValue(subjectivityValue){
 	  gauge.maxValue = 100; // set max gauge value
 	  gauge.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-	  gauge.set(subjectivityValue); // set actual value
+	  gauge.set(polarityValue); // set actual value
 }
 
-function setObjectivityValue(objectivityValue){
+function setSubjectivityValue(subjectivityValue){
 	var opts = {
 		angle: -0.20, // The span of the gauge arc
 		lineWidth: 0.44, // The line thickness
@@ -227,17 +228,17 @@ function setObjectivityValue(objectivityValue){
 			subColor: '#666666'
 		  }
 	  };
-	  var target = document.getElementById('objDial'); // your canvas element
+	  var target = document.getElementById('polDial'); // your canvas element
 	  var gauge2 = new Gauge(target).setOptions(opts); // create sexy gauge!
-	  gauge2.setTextField(document.getElementById('objVal'));
+	  gauge2.setTextField(document.getElementById('polVal'));
 	  gauge2.maxValue = 100; // set max gauge value
 	  gauge2.setMinValue(0);  // Prefer setter over gauge.minValue = 0
 	  gauge2.animationSpeed = 32; // set animation speed (32 is default value)
-	  gauge2.set(objectivityValue); // set actual value
+	  gauge2.set(subjectivityValue); // set actual value
 }
 
-function setPolarityValue(polarityValue, nounName){
-	document.getElementById('polaritySubject').innerHTML = nounName;
+function setSentimentValue(sentimentValue, nounName){
+	document.getElementById('sentimentSubject').innerHTML = nounName;
 
 	var opts = {
 		angle: -0.2, // The span of the gauge arc
@@ -268,46 +269,37 @@ function setPolarityValue(polarityValue, nounName){
 	  gauge.maxValue = 100; // set max gauge value
 	  gauge.setMinValue(-100);  // Prefer setter over gauge.minValue = 0
 	  gauge.animationSpeed = 32; // set animation speed (32 is default value)
-	  gauge.set(polarityValue); // set actual value
+	  gauge.set(sentimentValue); // set actual value
 
 	  //set the punchline to match the dial value
-	  setPunchline(polarityValue);
+	  setPunchline(sentimentValue);
 }
 
 //function for polarity dial that sets a punchline to summarize the value of the dial
-function setPunchline(polarityValue){
-	var punchline = document.getElementById('polPunch');
+function setPunchline(sentimentValue){
+	var punchline = document.getElementById('sentPunch');
 
-	  if(polarityValue >= -99 && polarityValue <= -75){
+	  if(sentimentValue >= -99 && sentimentValue <= -75){
 		  punchline.innerHTML = " - Very Negative"
 	  }
-	  else if(polarityValue >= -74 && polarityValue <= -26){
+	  else if(sentimentValue >= -74 && sentimentValue <= -26){
 		  punchline.innerHTML = " - Negative"
 	  }
-	  else if(polarityValue >= -25 && polarityValue < 0){
+	  else if(sentimentValue >= -25 && sentimentValue < 0){
 		  punchline.innerHTML = " - Leaning Negative"
 	  }
-	  else if(polarityValue == 0){
+	  else if(sentimentValue == 0){
 		  punchline.innerHTML = " - Neutral"
 	  }
-	  else if(polarityValue > 0 && polarityValue <= 25){
+	  else if(sentimentValue > 0 && sentimentValue <= 25){
 		  punchline.innerHTML = " - Leaning Positive"
 	  }
-	  else if(polarityValue >= 26 && polarityValue <= 74){
+	  else if(sentimentValue >= 26 && sentimentValue <= 74){
 		  punchline.innerHTML = " - Positive"
 	  }
 	  else {
 		  punchline.innerHTML = " - Very Positive"
 	  }
-}
-
-function setSpellingErrors(val, percentval){
-	document.getElementById('spellingErrors').innerHTML = val;
-	document.getElementById('percentval').innerHTML = percentval;
-}
-
-function setWordCount(val){
-	document.getElementById('wordCountVal').innerHTML = val;
 }
 
 //call like so: makeAPICall( get or post, url with params, (result)=> { do stuff with result })

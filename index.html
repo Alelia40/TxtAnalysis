@@ -41,8 +41,8 @@
 				<h2 class="analysis">Spelling Errors</h2> <input type="checkbox" id="spellingErrorsToggle" checked><span class="checkmark"></span><br>
 				<h2 class="analysis">Word Count</h2> <input type="checkbox" id="wordCountToggle" checked><span class="checkmark"></span><br>
 				<h2 class="analysis">Subjectivity</h2> <input type="checkbox" id="subjectivityToggle" checked><span class="checkmark"></span><br>
-				<h2 class="analysis">Objectivity</h2> <input type="checkbox" id="objectivityToggle" checked><span class="checkmark"></span><br>
-				<h2 class="analysis">Targeted Sentiment Analysis</h2> <input type="checkbox" id="polarityToggle" checked><span class="checkmark"></span>
+				<h2 class="analysis">polarity</h2> <input type="checkbox" id="polarityToggle" checked><span class="checkmark"></span><br>
+				<h2 class="analysis">Targeted Sentiment Analysis</h2> <input type="checkbox" id="sentimentToggle" checked><span class="checkmark"></span>
 			</div>
 		</div>
 		<button id="makeReportBtn" class="round-button" onclick="onSubmitPressed()">Generate Report</button>
@@ -78,20 +78,20 @@
 				<label id="subVal"></label>
 			</div>
 
-			<div id="objectivityDisplay" class="largeDial" style="text-align: left;">
-				<h2>Objectivity</h2>
+			<div id="polarityDisplay" class="largeDial" style="text-align: left;">
+				<h2>polarity</h2>
 				<canvas id="objDial" height="150" width="200"></canvas>
 				<label id="objVal"></label>
 			</div>
 
 
-			<div id="polarityDisplay" class="largeDial">
+			<div id="SentimentDisplay" class="largeDial">
 				<h2>Targeted Sentiment Analysis</h2>
-				<input type="text" id="polarityCheck" placeholder="Enter noun here" /> <button class="round-button" onclick="onPolarityClick()">Check
+				<input type="text" id="sentimentCheck" placeholder="Enter noun here" /> <button class="round-button" onclick="onSentimentClick()">Check
 					Sentiment</button>
-				<p>Sentiment towards: <span style="font-style:italic" id="polaritySubject"></span></p>
-				<canvas id="polDial" height="150" width="200"></canvas>
-				<label id="polarityVal"></label><label id="polPunch"></label>
+				<p>Sentiment towards: <span style="font-style:italic" id="sentimentSubject"></span></p>
+				<canvas id="sentDial" height="150" width="200"></canvas>
+				<label id="sentimentVal"></label><label id="sentPunch"></label>
 			</div>
 
 		</div>

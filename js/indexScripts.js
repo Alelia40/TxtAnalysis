@@ -160,7 +160,10 @@ function onSentimentClick(){
 
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?filename=${filename}&subject=${subject}`, (result) => {
 		console.log(result);
-		//setTargettedAnalysisValues(result.AveragePolarity, result.AverageSubjectivity);
+
+		targettedJSON = JSON.parse(result);
+
+		setTargettedAnalysisValues(targettedJSON.Subjectivity*100, targettedJSON.Polarity*100);
 	})
 }
 

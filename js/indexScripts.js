@@ -46,14 +46,16 @@ function onSubmitPressed() {
 		setPolarityValue(myJSON.AveragePolarity * 100);
 		//pase the word frequency data
 		var wordFreqObj = myJSON.TopFiveWords;
+		var topFiveLabels = [];
 		var topFiveData = [];
 		for (var key in wordFreqObj){
 			if (wordFreqObj.hasOwnProperty(key)) {
 				var val = wordFreqObj[key];
-				topFiveData.push([key, val]);
+				topFiveLabels.push(key);
+				topFiveData.push(val);
 			  }
 		}
-		setMostUsedWordsGraph(topFiveData);
+		setMostUsedWordsGraph(topFiveLabels, topFiveData);
 	});
 }
 
@@ -184,12 +186,13 @@ function onSentimentClick(){
 }
 
 
-function setMostUsedWordsGraph(graphData){
+function setMostUsedWordsGraph(graphLabels, graphData){
 	
 	var canvasElement = document.getElementById("wordsChart");
 	
 	var wordBarChart = new Chart(canvasElement, {
 		type: 'horizontalBar',
+		labels: graphLabel,
 		data: graphData,
 		options: Chart.defaults.horizontalBar
 	})

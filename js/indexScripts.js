@@ -48,7 +48,7 @@ function onSubmitPressed() {
 		var wordFreqObj = myJSON.TopFiveWords;
 		var topFiveData = [];
 		for (var key in wordFreqObj){
-			if (obj.hasOwnProperty(key)) {
+			if (wordFreqObj.hasOwnProperty(key)) {
 				var val = wordFreqObj[key];
 				topFiveData.push([key, val]);
 			  }

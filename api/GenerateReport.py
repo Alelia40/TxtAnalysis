@@ -7,7 +7,8 @@ import json
 
 def MostUsedWords(blob):
     top_five = reversed(sorted(blob.np_counts.items(), key=lambda kv: (kv[1], kv[0]))[-5:])
-    return top_five
+
+    return dict(top_five)
 
 
 def SpellingErrors(blob):
@@ -73,13 +74,14 @@ text_file.close()
 spell_errors = SpellingErrors(blob)
 spell_errors_percent = SpellingErrorsPercent(blob)
 avg_pol, avg_subj = AvgSentenceSentiment(blob)
-#top_five_dict = MostUsedWords(blob)
-#dict_json = json.dumps(top_five_dict)
+top_five_dict = MostUsedWords(blob)
+dict_json = json.dumps(top_five_dict)
 return_string = ("\"SpellErrors\": " + str(spell_errors) +
                  ",\n\"SpellErrorsPercent\": " + str(spell_errors_percent) +
                  ",\n\"AveragePolarity\": " + str(avg_pol) +
-                 ",\n\"AverageSubjectivity\": " + str(avg_subj))
-#                 ",\n\"TopFiveWords\": " + dict_json)
+                 ",\n\"AverageSubjectivity\": " + str(avg_subj) +
+                 ",\n\"TopFiveWords\": " + dict_json)
+
 
 print("Content-Type: text/plain\r\n\r\n")
 print("{\n" + return_string + "\n}")

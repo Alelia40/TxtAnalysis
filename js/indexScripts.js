@@ -192,7 +192,7 @@ function setMostUsedWordsGraph(graphLabels, graphData){
 	
 	var wordBarChart = new Chart(canvasElement, {
 		type: 'horizontalBar',
-		labels: graphLabel,
+		labels: graphLabels,
 		data: graphData,
 		options: Chart.defaults.horizontalBar
 	})

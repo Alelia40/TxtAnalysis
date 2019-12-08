@@ -17,8 +17,12 @@ def SpellingErrors(blob):
     for sentence in blob.sentences:
         words = sentence.words
         for word in words:
+            correct = False
             possible_words = word.spellcheck()
-            if word != possible_words[0][0]:
+            for possible in possible_words:
+                if word.lower() == possible[0].lower():
+                    correct = True
+            if not correct:
                 counter += 1
 
     return counter

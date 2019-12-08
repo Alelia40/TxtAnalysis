@@ -44,6 +44,16 @@ function onSubmitPressed() {
 		document.getElementById('spellingPercent').innerHTML = myJSON.SpellErrorsPercent;
 		setSubjectivityValue(myJSON.AverageSubjectivity * 100);
 		setPolarityValue(myJSON.AveragePolarity * 100);
+		//pase the word frequency data
+		var wordFreqObj = myJSON.TopFiveWords;
+		var topFiveData = [];
+		for (var key in wordFreqObj){
+			if (obj.hasOwnProperty(key)) {
+				var val = wordFreqObj[key];
+				topFiveData.push([key, val]);
+			  }
+		}
+		setMostUsedWordsGraph(topFiveData);
 	});
 }
 
@@ -178,7 +188,7 @@ function setMostUsedWordsGraph(graphData){
 	
 	var canvasElement = document.getElementById("wordsChart");
 	
-	var wordBarChart = new Chart(ctx, {
+	var wordBarChart = new Chart(canvasElement, {
 		type: 'horizontalBar',
 		data: graphData,
 		options: Chart.defaults.horizontalBar

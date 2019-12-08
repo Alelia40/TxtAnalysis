@@ -37,7 +37,5 @@ else:
     avg_subj = sum(subj) / len(subj)
 
 print("Content-Type: text/plain\r\n\r\n")
-print("{\n\"Subject\":" + str(subject) + ",")
-print("\"CountFound\":" + str(count) + ",")
-print("\"Polarity\":" + str(avg_pol) + ",")
+print("{\n\"Polarity\":" + str(avg_pol) + ",")
 print("\"Subjectivity\":" + str(avg_subj) + "\n}")

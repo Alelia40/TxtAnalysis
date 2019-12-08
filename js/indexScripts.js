@@ -177,12 +177,13 @@ function onSentimentClick(){
 
 	document.getElementById("sentimentSubject").innerHTML = subject;
 	var filename = getServerSave();
+	console.log(subject + " " + filename)
 
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/AvgSentimentTargeted.py?filename=${filename}&subject=${subject}`, (result) => {
 		console.log(result);
 
 		targettedJSON = JSON.parse(result);
-
+        console.log(targettedJSON)
 		setTargettedAnalysisValues(targettedJSON.Subjectivity*100, targettedJSON.Polarity*100);
 	})
 }

@@ -38,8 +38,8 @@ function onSubmitPressed() {
 	makeAPICall('GET', `http://25.7.255.193/cgi-bin/Repo/TxtAnalysis/api/GenerateReport.py?filename=${filename}`, (result) => {
 	    console.log(result);
 		myJSON = JSON.parse(result);
+
 		//based on results, sets values
-		console.log(myJSON.SpellErrorsPercent);
 		document.getElementById('spellingErrors').innerHTML = myJSON.SpellErrors;
 		document.getElementById('spellingPercent').innerHTML = myJSON.SpellErrorsPercent;
 		setSubjectivityValue(myJSON.AverageSubjectivity * 100);
@@ -89,6 +89,15 @@ function displayDials(){
 	//} else {
    //	wcDisplay.style.display = "none";
 	//}
+
+	//most used words toggle
+	var muwToggle = document.getElementById("muwToggle");
+	var muwDisplay = document.getElementById("mostUsedWordsDisplay");
+	if (muwToggle.checked == true){
+		muwDisplay.style.display = "block";
+	} else {
+		muwDisplay.style.display = "none";
+	}
 
 	//Subjectivity Toggle
 	var subjectivityToggle = document.getElementById("subjectivityToggle");
@@ -161,6 +170,18 @@ function onSentimentClick(){
 		targettedJSON = JSON.parse(result);
 
 		setTargettedAnalysisValues(targettedJSON.Subjectivity*100, targettedJSON.Polarity*100);
+	})
+}
+
+
+function setMostUsedWordsGraph(graphData){
+	
+	var canvasElement = document.getElementById("wordsChart");
+	
+	var wordBarChart = new Chart(ctx, {
+		type: 'horizontalBar',
+		data: graphData,
+		options: Chart.defaults.horizontalBar
 	})
 }
 

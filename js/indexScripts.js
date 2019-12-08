@@ -55,6 +55,8 @@ function onSubmitPressed() {
 				topFiveData.push(val);
 			  }
 		}
+		console.log(topFiveLabels);
+		console.log(topFiveData);
 		setMostUsedWordsGraph(topFiveLabels, topFiveData);
 	});
 }
@@ -189,12 +191,37 @@ function onSentimentClick(){
 function setMostUsedWordsGraph(graphLabels, graphData){
 	
 	var canvasElement = document.getElementById("wordsChart");
-	
+	//options
+	var graphOptions = {
+		responsive: true,
+		title: {
+			display: true,
+			position: "top",
+			text: "Top Five Words",
+			fontSize: 18,
+			fontColor: "#ffffff"
+		},
+		legend: {
+			display: true,
+			position: "bottom",
+			labels: {
+				fontColor: "#ffffff",
+				fontSize: 16
+			}
+		},
+		scales: {
+			yAxes: [{
+				ticks: {
+				min: 0
+				}
+			}]
+		}
+	};
 	var wordBarChart = new Chart(canvasElement, {
 		type: 'horizontalBar',
 		labels: graphLabels,
-		data: graphData,
-		options: Chart.defaults.horizontalBar
+		data: graphData, 
+		options: graphOptions
 	})
 }
 

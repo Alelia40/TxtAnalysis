@@ -13,14 +13,10 @@ def MostUsedWords(blob):
 
 def SpellingErrors(blob):
     counter = 0
-    punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
 
     for sentence in blob.sentences:
-        words = sentence.split()
+        words = sentence.words
         for word in words:
-            for x in word.lower():
-                if x in punctuations:
-                    string = string.replace(x, "")
             possible_words = word.spellcheck()
             if word != possible_words[0][0]:
                 counter += 1

@@ -15,13 +15,13 @@ text = text_file.read()
 blob = TextBlob(text)
 text_file.close()
 
-subject = fs.getvalue('subject')
+subject = fs.getvalue('subject').lower()
 pol = []
 subj = []
 count = 0
 for s in blob.sentences:
     words = s.split()
-    if (str(subject) in words) or (str(subject) in words.lower()):
+    if str(subject) in words.lower():
         pol.append(s.polarity)
         subj.append(s.subjectivity)
         count += 1
@@ -37,7 +37,7 @@ else:
     avg_subj = sum(subj) / len(subj)
 
 print("Content-Type: text/plain\r\n\r\n")
-print("{\n\"Subject\":" + subject + ",")
+print("{\n\"Subject\":" + str(subject) + ",")
 print("\"CountFound\":" + str(count) + ",")
 print("\"Polarity\":" + str(avg_pol) + ",")
 print("\"Subjectivity\":" + str(avg_subj) + "\n}")

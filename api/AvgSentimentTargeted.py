@@ -20,9 +20,9 @@ pol = []
 subj = []
 for s in blob.sentences:
     words = s.split()
-    if subject in words or words.lower():
-        pol.append(s.polarity)
-        subj.append(s.subjectivity)
+#    if subject in words or words.lower():
+#        pol.append(s.polarity)
+#        subj.append(s.subjectivity)
 
 if len(pol) == 0:
     avg_pol = 0
